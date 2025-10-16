@@ -22,14 +22,14 @@ void MainWindow::setupLayout() {
     grid.set_row_spacing(100);
     grid.set_column_spacing(100);
 
-    pageControl.set_size_request(400, 300);
-    grid.attach(pageControl, 1, 1, 1);
+    pageControl.set_size_request(400, 200);
+    grid.attach(pageControl, 1, 0);
 
-    pageSettings.set_size_request(300, 500);
-    grid.attach(pageSettings, 0, 1, 1);
+    pageSettings.set_size_request(400, 200);
+    grid.attach(pageSettings, 0, 0);
 
-    pageStats.set_size_request(300, 500);
-    grid.attach(pageStats, 2, 1, 1);
+    pageStats.set_size_request(400, 200);
+    grid.attach(pageStats, 2, 0);
 
     set_child(grid);
 }

@@ -3,9 +3,8 @@
 //
 
 #include "headers/pageControl.h"
+#include "headers/shared.h"
 #include <gtkmm.h>
-
-bool isOnline = false; // Placeholder
 
 PageControl::PageControl() {
     set_label("Control Menu");
@@ -32,14 +31,15 @@ PageControl::~PageControl() {
 }
 
 void PageControl::on_button_clicked() {
-    isOnline = !isOnline;
+    sharedValuesRef.isOnline = !sharedValuesRef.isOnline;
+    sharedValuesRef.set_is_online();
     updateLabel();
     updateButton();
 }
 
 void PageControl::updateLabel()
 {
-    if (isOnline)
+    if (sharedValuesRef.isOnline)
     {
         labelBotStatus.set_markup(R"(<span foreground="green" size="x-large">Bot online</span>)");
     }
@@ -51,7 +51,7 @@ void PageControl::updateLabel()
 
 void PageControl::updateButton()
 {
-    if (isOnline)
+    if (sharedValuesRef.isOnline)
     {
         buttonStart.set_label("Stop bot");
     }

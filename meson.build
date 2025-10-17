@@ -4,6 +4,7 @@ project('BotInterface', 'cpp',
 
 # Dependency setup for gtkmm
 gtkmm_dep = dependency('gtkmm-4.0', required: true)
+libsigcpp = dependency('sigc++-3.0', required: true)
 
 # Create the executable
 BotInterface = executable('BotInterface',
@@ -12,8 +13,6 @@ BotInterface = executable('BotInterface',
                           'src/pageControl.cpp',
                           'src/pageSettings.cpp',
                           'src/pageStats.cpp',
-                          install : true,
-                          dependencies : gtkmm_dep)
-
-# Add a test for the executable
-test('test', BotInterface)
+                          'src/shared.cpp',
+                          install: true,
+                          dependencies: [gtkmm_dep, libsigcpp])

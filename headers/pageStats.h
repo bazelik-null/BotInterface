@@ -2,18 +2,18 @@
 // Created by niko on 16.10.2025.
 //
 
-#ifndef BOTINTERFACEGTK_PAGESTATS_H
-#define BOTINTERFACEGTK_PAGESTATS_H
+#ifndef BOTINTERFACE_PAGESTATS_H
+#define BOTINTERFACE_PAGESTATS_H
 
 #include <gtkmm.h>
 
-class PageStats : public Gtk::Frame {
-public:
-    PageStats();
-    virtual ~PageStats();
+class PageStats final : public Gtk::Frame {
+    public:
+        PageStats();
+        ~PageStats() override;
 
-private:
-    Gtk::Box box;
+    private:
+        Gtk::Box box;
 };
 
-#endif //BOTINTERFACEGTK_PAGESTATS_H
+#endif //BOTINTERFACE_PAGESTATS_H

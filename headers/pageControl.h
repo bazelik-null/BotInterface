@@ -2,25 +2,25 @@
 // Created by niko on 16.10.2025.
 //
 
-#ifndef BOTINTERFACEGTK_PAGECONTROL_H
-#define BOTINTERFACEGTK_PAGECONTROL_H
+#ifndef BOTINTERFACE_PAGECONTROL_H
+#define BOTINTERFACE_PAGECONTROL_H
 
 #include <gtkmm.h>
 
-class PageControl : public Gtk::Frame {
-public:
-    PageControl();
-    virtual ~PageControl();
+class PageControl final : public Gtk::Frame {
+    public:
+        PageControl();
+        ~PageControl() override;
 
-protected:
-    void on_button_clicked();
-    void updateLabel();
-    void updateButton();
+    protected:
+        void on_button_clicked();
+        void updateLabel();
+        void updateButton();
 
-private:
-    Gtk::Box box;
-    Gtk::Label labelBotStatus;
-    Gtk::Button buttonStart;
+    private:
+        Gtk::Box box;
+        Gtk::Label labelBotStatus;
+        Gtk::Button buttonStart;
 };
 
-#endif //BOTINTERFACEGTK_PAGECONTROL_H
+#endif //BOTINTERFACE_PAGECONTROL_H

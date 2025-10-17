@@ -2,8 +2,8 @@
 // Created by niko on 17.10.2025.
 //
 
-#include "headers/shared.h"
-#include "headers/pageSettings.h"
+#include <headers/shared.h>
+#include <headers/ui/pageSettings.h>
 
 auto settingsValues = SettingsValues();
 SettingsValues& settingsValuesRef = settingsValues;

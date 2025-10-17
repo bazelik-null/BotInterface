@@ -1,5 +1,5 @@
 #include <gtkmm.h>
-#include "../headers/mainWindow.h"
+#include <headers/ui/mainWindow.h>
 
 int main(const int argc, char* argv[]) {
     // Create GTK app

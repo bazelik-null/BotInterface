@@ -2,9 +2,8 @@
 // Created by niko on 16.10.2025.
 //
 
-#include "headers/pageSettings.h"
-#include "headers/shared.h"
-#include <gtkmm.h>
+#include <headers/ui/pageSettings.h>
+#include <headers/shared.h>
 
 PageSettings::PageSettings() {
     set_label("Settings");
@@ -100,5 +99,5 @@ void PageSettings::on_button_clicked() const
 }
 
 void PageSettings::on_online_changed() {
-    buttonSave.set_sensitive(!sharedValuesRef.isOnline); // если online==true — кнопка заблокирована
+    buttonSave.set_sensitive(!sharedValuesRef.isOnline);
 }

@@ -1,5 +1,4 @@
-#include "headers/mainWindow.h"
-#include <gtkmm.h>
+#include <headers/ui/mainWindow.h>
 
 MainWindow::MainWindow() {
     set_title("Bot Interface");

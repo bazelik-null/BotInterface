@@ -6,7 +6,7 @@
 #define BOTINTERFACE_PAGESETTINGS_H
 
 #include <gtkmm.h>
-#include "headers/shared.h"
+#include <headers/shared.h>
 
 extern void setupSettingsValues(SettingsValues* settingsValuesPtr);
 

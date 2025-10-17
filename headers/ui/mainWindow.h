@@ -6,9 +6,9 @@
 #define BOTINTERFACE_MAINWINDOW_H
 
 #include <gtkmm.h>
-#include "pageControl.h"
-#include "pageSettings.h"
-#include "pageStats.h"
+#include <headers/ui/pageControl.h>
+#include <headers/ui/pageSettings.h>
+#include <headers/ui/pageStats.h>
 
 class MainWindow final : public Gtk::Window {
     public:

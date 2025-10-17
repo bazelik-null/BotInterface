@@ -2,8 +2,7 @@
 // Created by niko on 16.10.2025.
 //
 
-#include "headers/pageStats.h"
-#include <gtkmm.h>
+#include <headers/ui/pageStats.h>
 
 PageStats::PageStats() {
     set_label("Statistics");

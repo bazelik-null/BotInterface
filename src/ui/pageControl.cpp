@@ -2,9 +2,8 @@
 // Created by niko on 16.10.2025.
 //
 
-#include "headers/pageControl.h"
-#include "headers/shared.h"
-#include <gtkmm.h>
+#include <headers/ui/pageControl.h>
+#include <headers/shared.h>
 
 PageControl::PageControl() {
     set_label("Control Menu");

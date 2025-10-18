@@ -5,12 +5,13 @@ project('BotInterface', 'cpp',
 # Dependency setup for gtkmm
 gtkmm_dep = dependency('gtkmm-4.0', required: true)
 libsigcpp = dependency('sigc++-3.0', required: true)
+dependency_json = dependency('nlohmann_json', required: true)
 
 # Download cpp-httplib.h start
 lib_dir = 'lib'
+
 httplib_url = 'https://raw.githubusercontent.com/yhirose/cpp-httplib/refs/heads/master/httplib.h'
 httplib_file = join_paths(lib_dir, 'httplib.h')
-
 download_httplib = run_command('curl', '-L', httplib_url, '-o', httplib_file)
 
 if download_httplib.returncode() != 0

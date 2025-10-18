@@ -7,17 +7,24 @@
 
 #include <string>
 #include <sigc++/sigc++.h>
+#include <nlohmann/json.hpp>
+
+// TODO: Remove hardcode
 
 class SettingsValues {
     public:
         SettingsValues();
 
         void setValues(const std::string& tokenInput, const std::string& channelInput, const std::string& adminChannelInput = {}, const std::string& adminsInput = {});
+        bool readValuesFromJson();
+        nlohmann::json getValuesAsJson();
 
         std::string token;
         std::string channel;
         std::string adminChannel;
         std::string admins;
+    private:
+        static bool getValue(const nlohmann::json& json, const std::string& key, std::string& value);
 };
 
 class SharedValues

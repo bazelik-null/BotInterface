@@ -15,6 +15,8 @@ PageSettings::PageSettings() {
     updateEntryAdminChannel();
     updateEntryAdmins();
     updateButtonSave();
+    updateButtonPush();
+    updateButtonPull();
 
     set_child(box);
 }
@@ -78,14 +80,47 @@ void PageSettings::updateEntryAdmins()
 
 void PageSettings::updateButtonSave()
 {
-    sharedValuesRef.signal_online_changed.connect(sigc::mem_fun(*this, &PageSettings::on_online_changed));
     buttonSave.set_label("Save settings");
+
     buttonSave.signal_clicked().connect(sigc::mem_fun(*this, &PageSettings::on_button_clicked));
-    buttonSave.set_margin_top(150);
-    buttonSave.set_margin_bottom(50);
+
+    buttonSave.set_margin_top(50);
+    buttonSave.set_margin_bottom(25);
     buttonSave.set_margin_start(50);
     buttonSave.set_margin_end(50);
     box.append(buttonSave);
+}
+
+void PageSettings::updateButtonPush()
+{
+    sharedValuesRef.signal_online_changed.connect(sigc::mem_fun(*this, &PageSettings::on_online_changed));
+
+    buttonPush.set_label("Push settings");
+
+    buttonPush.signal_clicked().connect(sigc::mem_fun(*this, &PageSettings::on_button_clicked));
+
+    buttonPush.set_margin_bottom(25);
+    buttonPush.set_margin_start(50);
+    buttonPush.set_margin_end(50);
+
+    box.append(buttonPush);
+}
+
+void PageSettings::updateButtonPull()
+{
+    sharedValuesRef.signal_online_changed.connect(sigc::mem_fun(*this, &PageSettings::on_online_changed));
+
+    buttonPull.set_label("Pull settings");
+
+    buttonPull.signal_clicked().connect(sigc::mem_fun(*this, &PageSettings::on_button_clicked));
+
+    buttonPull.set_margin_bottom(25);
+    buttonPull.set_margin_start(50);
+    buttonPull.set_margin_end(50);
+
+    buttonPull.set_sensitive(false);
+
+    box.append(buttonPull);
 }
 
 void PageSettings::on_button_clicked() const
@@ -99,5 +134,6 @@ void PageSettings::on_button_clicked() const
 }
 
 void PageSettings::on_online_changed() {
-    buttonSave.set_sensitive(!sharedValuesRef.isOnline);
+    buttonPush.set_sensitive(!sharedValuesRef.isOnline);
+    buttonPull.set_sensitive(sharedValuesRef.isOnline);
 }

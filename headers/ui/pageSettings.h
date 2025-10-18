@@ -8,6 +8,8 @@
 #include <gtkmm.h>
 #include <headers/shared.h>
 
+// TODO: Remove hardcode
+
 extern void setupSettingsValues(SettingsValues* settingsValuesPtr);
 
 class PageSettings final : public Gtk::Frame {
@@ -23,11 +25,15 @@ class PageSettings final : public Gtk::Frame {
         void updateEntryAdminChannel();
         void updateEntryAdmins();
         void updateButtonSave();
+        void updateButtonPush();
+        void updateButtonPull();
 
     private:
         Gtk::Box box;
 
         Gtk::Button buttonSave;
+        Gtk::Button buttonPush;
+        Gtk::Button buttonPull;
 
         Gtk::Label labelEntryToken;
         Gtk::Label labelEntryChannel;

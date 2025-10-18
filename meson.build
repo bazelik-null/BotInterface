@@ -6,6 +6,20 @@ project('BotInterface', 'cpp',
 gtkmm_dep = dependency('gtkmm-4.0', required: true)
 libsigcpp = dependency('sigc++-3.0', required: true)
 
+# Download cpp-httplib.h start
+lib_dir = 'lib'
+httplib_url = 'https://raw.githubusercontent.com/yhirose/cpp-httplib/refs/heads/master/httplib.h'
+httplib_file = join_paths(lib_dir, 'httplib.h')
+
+download_httplib = run_command('curl', '-L', httplib_url, '-o', httplib_file)
+
+if download_httplib.returncode() != 0
+    error('Failed to download httplib.h')
+endif
+
+inc = include_directories(lib_dir)
+# Download cpp-httplib.h end
+
 # Create the executable
 BotInterface = executable(  'BotInterface',
                             'src/main.cpp',

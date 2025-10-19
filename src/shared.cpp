@@ -16,13 +16,13 @@ SettingsValues::SettingsValues()
 
     Data data = jsonIO.readValuesFromJson();
 
-    token = data.token;
-    first = data.first;
-    second = data.second;
-    third = data.third;
-
-    // If there is no saved values we just initialize blank var's
-    if (!data.success)
+    if (data.success)
+    {
+        token = data.token;
+        first = data.first;
+        second = data.second;
+        third = data.third;
+    } else // If there is no saved values we just initialize blank var's
     {
         token = "";
         first = "";

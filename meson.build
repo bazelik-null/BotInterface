@@ -25,6 +25,7 @@ inc = include_directories(lib_dir)
 BotInterface = executable(  'BotInterface',
                             'src/main.cpp',
                             'src/shared.cpp',
+                            'src/io/jsonio.cpp',
                             'src/ui/mainWindow.cpp',
                             'src/ui/pageControl.cpp',
                             'src/ui/pageSettings.cpp',

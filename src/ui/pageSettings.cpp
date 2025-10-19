@@ -10,10 +10,11 @@ PageSettings::PageSettings() {
 
     box.set_orientation(Gtk::Orientation::VERTICAL);
 
-    updateEntryToken();
-    updateEntryChannel();
-    updateEntryAdminChannel();
-    updateEntryAdmins();
+    entries.updateEntryToken();
+    entries.updateEntry1();
+    entries.updateEntry2();
+    entries.updateEntry3();
+    appendEntries();
     updateButtonSave();
     updateButtonPush();
     updateButtonPull();
@@ -25,57 +26,66 @@ PageSettings::~PageSettings() {
     // Destructor
 }
 
-void PageSettings::updateEntryToken()
+void PageSettings::appendEntries()
+{
+    box.append(entries.labelEntryToken);
+    box.append(entries.entryToken);
+
+    box.append(entries.labelEntry1);
+    box.append(entries.entry1);
+
+    box.append(entries.labelEntry2);
+    box.append(entries.entry2);
+
+    box.append(entries.labelEntry3);
+    box.append(entries.entry3);
+}
+
+
+void Entries::updateEntryToken()
 {
     labelEntryToken.set_margin_top(25);
-    labelEntryToken.set_label("Enter bot Token:");
+    labelEntryToken.set_label(textLabelEntryToken);
     labelEntryToken.set_margin_bottom(10);
-    box.append(labelEntryToken);
 
     entryToken.set_text(settingsValuesRef.token);
     entryToken.set_margin_end(10);
     entryToken.set_margin_start(10);
     entryToken.set_margin_bottom(50);
-    box.append(entryToken);
 }
 
-void PageSettings::updateEntryChannel()
+void Entries::updateEntry1()
 {
-    labelEntryChannel.set_label("Enter channel ID for approved forms:");
-    labelEntryChannel.set_margin_bottom(10);
-    box.append(labelEntryChannel);
+    labelEntry1.set_label(textLabelEntry1);
+    labelEntry1.set_margin_bottom(10);
 
-    entryChannel.set_text(settingsValuesRef.channel);
-    entryChannel.set_margin_end(10);
-    entryChannel.set_margin_start(10);
-    entryChannel.set_margin_bottom(50);
-    box.append(entryChannel);
+
+    entry1.set_text(settingsValuesRef.first);
+    entry1.set_margin_end(10);
+    entry1.set_margin_start(10);
+    entry1.set_margin_bottom(50);
 }
 
-void PageSettings::updateEntryAdminChannel()
+void Entries::updateEntry2()
 {
-    labelEntryAdminChannel.set_label("Enter channel ID for pending forms:");
-    labelEntryAdminChannel.set_margin_bottom(10);
-    box.append(labelEntryAdminChannel);
+    labelEntry2.set_label(textLabelEntry2);
+    labelEntry2.set_margin_bottom(10);
 
-    entryAdminChannel.set_text(settingsValuesRef.adminChannel);
-    entryAdminChannel.set_margin_end(10);
-    entryAdminChannel.set_margin_start(10);
-    entryAdminChannel.set_margin_bottom(50);
-    box.append(entryAdminChannel);
+    entry2.set_text(settingsValuesRef.second);
+    entry2.set_margin_end(10);
+    entry2.set_margin_start(10);
+    entry2.set_margin_bottom(50);
 }
 
-void PageSettings::updateEntryAdmins()
+void Entries::updateEntry3()
 {
-    labelEntryAdmins.set_label("Enter admins IDs:");
-    labelEntryAdmins.set_margin_bottom(10);
-    box.append(labelEntryAdmins);
+    labelEntry3.set_label(textLabelEntry3);
+    labelEntry3.set_margin_bottom(10);
 
-    entryAdmins.set_text(settingsValuesRef.admins);
-    entryAdmins.set_margin_end(10);
-    entryAdmins.set_margin_start(10);
-    entryAdmins.set_margin_bottom(50);
-    box.append(entryAdmins);
+    entry3.set_text(settingsValuesRef.third);
+    entry3.set_margin_end(10);
+    entry3.set_margin_start(10);
+    entry3.set_margin_bottom(50);
 }
 
 void PageSettings::updateButtonSave()
@@ -125,12 +135,12 @@ void PageSettings::updateButtonPull()
 
 void PageSettings::on_button_clicked() const
 {
-    const std::string tokenInput = entryToken.get_text();
-    const std::string channelInput = entryChannel.get_text();
-    const std::string adminChannelInput = entryAdminChannel.get_text();
-    const std::string adminsInput = entryAdmins.get_text();
+    const std::string tokenInput = entries.entryToken.get_text();
+    const std::string firstInput = entries.entry1.get_text();
+    const std::string secondInput = entries.entry2.get_text();
+    const std::string thirdInput = entries.entry3.get_text();
 
-    settingsValuesRef.setValues(tokenInput, channelInput, adminChannelInput, adminsInput);
+    settingsValuesRef.setValues(tokenInput, firstInput, secondInput, thirdInput);
 }
 
 void PageSettings::on_online_changed() {

@@ -6,43 +6,52 @@
 #define BOTINTERFACE_PAGESETTINGS_H
 
 #include <gtkmm.h>
-#include <headers/shared.h>
 
-// TODO: Remove hardcode
+struct Entries
+{
+    void updateEntryToken();
+    void updateEntry1();
+    void updateEntry2();
+    void updateEntry3();
 
-extern void setupSettingsValues(SettingsValues* settingsValuesPtr);
+    Gtk::Label labelEntryToken;
+    Gtk::Label labelEntry1;
+    Gtk::Label labelEntry2;
+    Gtk::Label labelEntry3;
+
+    Gtk::PasswordEntry entryToken;
+    Gtk::Entry entry1;
+    Gtk::Entry entry2;
+    Gtk::Entry entry3;
+
+    Glib::ustring textLabelEntryToken = "Enter bot Token:";
+    Glib::ustring textLabelEntry1     = "Enter channel ID for approved forms:"; // Change this text for your bot
+    Glib::ustring textLabelEntry2     = "Enter channel ID for pending forms:";  // And this
+    Glib::ustring textLabelEntry3     = "Enter admins IDs:";                    // And even this
+};
 
 class PageSettings final : public Gtk::Frame {
     public:
         PageSettings();
         ~PageSettings() override;
+        Gtk::Box box;
 
     protected:
         void on_button_clicked() const;
         void on_online_changed();
-        void updateEntryToken();
-        void updateEntryChannel();
-        void updateEntryAdminChannel();
-        void updateEntryAdmins();
+
+        void appendEntries();
+
         void updateButtonSave();
         void updateButtonPush();
         void updateButtonPull();
 
     private:
-        Gtk::Box box;
-
         Gtk::Button buttonSave;
         Gtk::Button buttonPush;
         Gtk::Button buttonPull;
 
-        Gtk::Label labelEntryToken;
-        Gtk::Label labelEntryChannel;
-        Gtk::Label labelEntryAdminChannel;
-        Gtk::Label labelEntryAdmins;
-
-        Gtk::PasswordEntry entryToken;
-        Gtk::Entry entryChannel;
-        Gtk::Entry entryAdminChannel;
-        Gtk::Entry entryAdmins;
+        Entries entries;
 };
+
 #endif //BOTINTERFACE_PAGESETTINGS_H

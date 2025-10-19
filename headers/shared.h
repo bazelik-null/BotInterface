@@ -7,24 +7,21 @@
 
 #include <string>
 #include <sigc++/sigc++.h>
-#include <nlohmann/json.hpp>
-
-// TODO: Remove hardcode
+#include <headers/io/jsonio.h>
 
 class SettingsValues {
     public:
         SettingsValues();
 
-        void setValues(const std::string& tokenInput, const std::string& channelInput, const std::string& adminChannelInput = {}, const std::string& adminsInput = {});
-        bool readValuesFromJson();
-        nlohmann::json getValuesAsJson();
+        void setValues(const std::string& tokenInput, const std::string& firstInput, const std::string& secondInput , const std::string& thirdInput);
 
         std::string token;
-        std::string channel;
-        std::string adminChannel;
-        std::string admins;
+        std::string first;
+        std::string second;
+        std::string third;
+
     private:
-        static bool getValue(const nlohmann::json& json, const std::string& key, std::string& value);
+        JsonIO jsonIO;
 };
 
 class SharedValues

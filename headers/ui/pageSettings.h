@@ -9,10 +9,10 @@
 
 struct Entries
 {
-    void updateEntryToken();
-    void updateEntry1();
-    void updateEntry2();
-    void updateEntry3();
+    void createEntryToken();
+    void createEntry1();
+    void createEntry2();
+    void createEntry3();
 
     Gtk::Label labelEntryToken;
     Gtk::Label labelEntry1;
@@ -42,9 +42,9 @@ class PageSettings final : public Gtk::Frame {
 
         void appendEntries();
 
-        void updateButtonSave();
-        void updateButtonPush();
-        void updateButtonPull();
+        void createButtonSave();
+        void createButtonPush();
+        void createButtonPull();
 
     private:
         Gtk::Button buttonSave;

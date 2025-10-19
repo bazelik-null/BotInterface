@@ -10,14 +10,14 @@ PageSettings::PageSettings() {
 
     box.set_orientation(Gtk::Orientation::VERTICAL);
 
-    entries.updateEntryToken();
-    entries.updateEntry1();
-    entries.updateEntry2();
-    entries.updateEntry3();
+    entries.createEntryToken();
+    entries.createEntry1();
+    entries.createEntry2();
+    entries.createEntry3();
     appendEntries();
-    updateButtonSave();
-    updateButtonPush();
-    updateButtonPull();
+    createButtonSave();
+    createButtonPush();
+    createButtonPull();
 
     set_child(box);
 }
@@ -42,7 +42,7 @@ void PageSettings::appendEntries()
 }
 
 
-void Entries::updateEntryToken()
+void Entries::createEntryToken()
 {
     labelEntryToken.set_margin_top(25);
     labelEntryToken.set_label(textLabelEntryToken);
@@ -54,7 +54,7 @@ void Entries::updateEntryToken()
     entryToken.set_margin_bottom(50);
 }
 
-void Entries::updateEntry1()
+void Entries::createEntry1()
 {
     labelEntry1.set_label(textLabelEntry1);
     labelEntry1.set_margin_bottom(10);
@@ -66,7 +66,7 @@ void Entries::updateEntry1()
     entry1.set_margin_bottom(50);
 }
 
-void Entries::updateEntry2()
+void Entries::createEntry2()
 {
     labelEntry2.set_label(textLabelEntry2);
     labelEntry2.set_margin_bottom(10);
@@ -77,7 +77,7 @@ void Entries::updateEntry2()
     entry2.set_margin_bottom(50);
 }
 
-void Entries::updateEntry3()
+void Entries::createEntry3()
 {
     labelEntry3.set_label(textLabelEntry3);
     labelEntry3.set_margin_bottom(10);
@@ -88,7 +88,7 @@ void Entries::updateEntry3()
     entry3.set_margin_bottom(50);
 }
 
-void PageSettings::updateButtonSave()
+void PageSettings::createButtonSave()
 {
     buttonSave.set_label("Save settings");
 
@@ -101,7 +101,7 @@ void PageSettings::updateButtonSave()
     box.append(buttonSave);
 }
 
-void PageSettings::updateButtonPush()
+void PageSettings::createButtonPush()
 {
     sharedValuesRef.signal_online_changed.connect(sigc::mem_fun(*this, &PageSettings::on_online_changed));
 
@@ -116,7 +116,7 @@ void PageSettings::updateButtonPush()
     box.append(buttonPush);
 }
 
-void PageSettings::updateButtonPull()
+void PageSettings::createButtonPull()
 {
     sharedValuesRef.signal_online_changed.connect(sigc::mem_fun(*this, &PageSettings::on_online_changed));
 

@@ -10,17 +10,8 @@ PageControl::PageControl() {
 
     box.set_orientation(Gtk::Orientation::VERTICAL);
 
-    updateLabel();
-    labelBotStatus.set_margin_top(150);
-    box.append(labelBotStatus);
-
-    updateButton();
-    buttonStart.signal_clicked().connect(sigc::mem_fun(*this, &PageControl::on_button_clicked));
-    buttonStart.set_margin_top(150);
-    buttonStart.set_margin_bottom(50);
-    buttonStart.set_margin_start(50);
-    buttonStart.set_margin_end(50);
-    box.append(buttonStart);
+    createLabel();
+    createButton();
 
     set_child(box);
 }
@@ -34,6 +25,28 @@ void PageControl::on_button_clicked() {
     sharedValuesRef.set_is_online();
     updateLabel();
     updateButton();
+}
+
+void PageControl::createLabel()
+{
+    labelBotStatus.set_margin_top(150);
+
+    updateLabel();
+
+    box.append(labelBotStatus);
+}
+
+void PageControl::createButton()
+{
+    buttonStart.signal_clicked().connect(sigc::mem_fun(*this, &PageControl::on_button_clicked));
+    buttonStart.set_margin_top(150);
+    buttonStart.set_margin_bottom(50);
+    buttonStart.set_margin_start(50);
+    buttonStart.set_margin_end(50);
+
+    updateButton();
+
+    box.append(buttonStart);
 }
 
 void PageControl::updateLabel()

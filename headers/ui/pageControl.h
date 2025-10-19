@@ -14,6 +14,10 @@ class PageControl final : public Gtk::Frame {
 
     protected:
         void on_button_clicked();
+
+        void createLabel();
+        void createButton();
+
         void updateLabel();
         void updateButton();
 

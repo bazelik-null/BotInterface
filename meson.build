@@ -30,6 +30,7 @@ BotInterface = executable(  'BotInterface',
                             'src/ui/pageControl.cpp',
                             'src/ui/pageSettings.cpp',
                             'src/ui/pageStats.cpp',
+                            'src/ui/pageLogin.cpp',
                             install: true,
                             dependencies: [gtkmm_dep, libsigcpp],
                             win_subsystem : 'windows'

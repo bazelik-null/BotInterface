@@ -10,17 +10,29 @@
 #include <headers/ui/pageSettings.h>
 #include <headers/ui/pageStats.h>
 
+#include "pageLogin.h"
+
 class MainWindow final : public Gtk::Window {
     public:
         MainWindow();
         ~MainWindow() override;
 
+        void switchPage();
+
+    protected:
+        void on_switch_page();
+
+        void createGrid();
+        void setupMenu();
+        void setupLogin();
+
     private:
         Gtk::Grid grid;
+
         PageControl pageControl;
         PageSettings pageSettings;
         PageStats pageStats;
 
-        void setupLayout();
+        PageLogin pageLogin;
 };
 #endif //BOTINTERFACE_MAINWINDOW_H

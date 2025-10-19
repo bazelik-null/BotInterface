@@ -19,9 +19,6 @@ class SettingsValues {
         std::string first;
         std::string second;
         std::string third;
-
-    private:
-        JsonIO jsonIO;
 };
 
 class SharedValues

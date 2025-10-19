@@ -8,24 +8,34 @@
 
 // TODO: encryption
 
-void JsonIO::saveValuesAsJson(Data data)
-{
-	const nlohmann::json json = getValuesAsJson(data);
+bool JsonIO::saveValuesAsJson(Data& data) {
+		std::ofstream outFile("settings.json");
 
-	std::ofstream outFile("settings.json");
+		if (!outFile)
+		{
+			std::cerr << "[ERROR]: File not found\n" << std::endl;
+			return false;
+		}
 
-	if (outFile.is_open()) {
-		outFile << json.dump(-1);
+		outFile << getValuesAsJson(data).dump(-1); // Save without spacing
+
+		if (outFile.fail())
+		{
+			std::cerr << "[ERROR]: Error writing to file\n" << std::endl;
+			outFile.close();
+			return false;
+		}
+
 		outFile.close();
-	}
-	std::cerr << "[ERROR]: Unable to open file for writing\n";
+		return true;
 }
 
 Data JsonIO::readValuesFromJson()
 {
 	Data data;
-	std::ifstream inFile("settings.json");
 	nlohmann::json json;
+
+	std::ifstream inFile("settings.json");
 
 	if (!inFile)
 	{
@@ -34,13 +44,16 @@ Data JsonIO::readValuesFromJson()
 		return data;
 	}
 
+	// Load file
 	try
 	{
 		inFile >> json;
-	} catch (const std::exception &e)
+	}
+	catch (const std::exception &e)
 	{
 		std::cerr << "[ERROR]: JSON parsing failed: " << e.what() << std::endl;
 		data.success = false;
+		inFile.close();
 		return data;
 	}
 
@@ -59,10 +72,11 @@ Data JsonIO::readValuesFromJson()
 		data.success = false;
 	}
 
+	inFile.close();
 	return data;
 }
 
-nlohmann::json JsonIO::getValuesAsJson(Data data)
+nlohmann::json JsonIO::getValuesAsJson(Data& data)
 {
 	nlohmann::json json;
 

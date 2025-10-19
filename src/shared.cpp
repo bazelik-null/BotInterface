@@ -14,7 +14,7 @@ SettingsValues::SettingsValues()
 {
     // TODO: Firstly we need to request values from server
 
-    Data data = jsonIO.readValuesFromJson();
+    Data data = JsonIO::readValuesFromJson();
 
     if (data.success)
     {
@@ -46,7 +46,7 @@ void SettingsValues::setValues(const std::string& tokenInput, const std::string&
     data.second = secondInput;
     data.third = thirdInput;
 
-    jsonIO.saveValuesAsJson(data);
+    JsonIO::saveValuesAsJson(data);
 }
 
 SharedValues::SharedValues()

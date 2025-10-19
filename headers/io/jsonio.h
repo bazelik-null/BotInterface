@@ -20,9 +20,9 @@ struct Data
 class JsonIO
 {
 	public:
-		static void saveValuesAsJson(Data data);
+		static bool saveValuesAsJson(Data& data);
 		static Data readValuesFromJson();
-		static nlohmann::json getValuesAsJson(Data data);
+		static nlohmann::json getValuesAsJson(Data& data);
 
 	private:
 		static bool getValue(const nlohmann::json& json, const std::string& key, std::string& value);

@@ -6,7 +6,6 @@
 #define BOTINTERFACE_LOGIN_H
 
 #include <gtkmm.h>
-#include <sigc++/sigc++.h>
 
 class PageLogin final : public Gtk::Frame {
 	public:
@@ -21,7 +20,7 @@ class PageLogin final : public Gtk::Frame {
 		}
 
 	protected:
-		void on_button_clicked();
+		void on_button_clicked() const;
 
 		void createButton();
 		void createEntryKey();

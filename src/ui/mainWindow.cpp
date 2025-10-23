@@ -11,9 +11,7 @@ MainWindow::MainWindow() {
     set_visible(true);
 }
 
-MainWindow::~MainWindow() {
-    // Destructor
-}
+MainWindow::~MainWindow() = default;
 
 void MainWindow::createGrid()
 {

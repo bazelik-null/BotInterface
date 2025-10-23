@@ -16,9 +16,7 @@ PageControl::PageControl() {
     set_child(box);
 }
 
-PageControl::~PageControl() {
-    // Destructor
-}
+PageControl::~PageControl() = default;
 
 void PageControl::on_button_clicked() {
     sharedValuesRef.isOnline = !sharedValuesRef.isOnline;

@@ -1,3 +1,4 @@
+<!--suppress HtmlDeprecatedAttribute -->
 <div align="center">
 <h1>🖥️ BotInterface: Simple GTKmm4 application for managing TG bots 🖥️</h1>
 </div>

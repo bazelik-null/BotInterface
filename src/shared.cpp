@@ -12,16 +12,14 @@ SharedValues& sharedValuesRef = sharedValues;
 
 SettingsValues::SettingsValues()
 {
-    // TODO: Firstly we need to request values from server
+    auto [successData, tokenData, firstData, secondData, thirdData] = JsonIO::readValuesFromJson();
 
-    Data data = JsonIO::readValuesFromJson();
-
-    if (data.success)
+    if (successData)
     {
-        token = data.token;
-        first = data.first;
-        second = data.second;
-        third = data.third;
+        token = tokenData;
+        first = firstData;
+        second = secondData;
+        third = thirdData;
     } else // If there is no saved values we just initialize blank var's
     {
         token = "";

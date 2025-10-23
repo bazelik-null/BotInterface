@@ -15,12 +15,10 @@ PageLogin::PageLogin() {
 	set_child(box);
 }
 
-PageLogin::~PageLogin() {
-	// Destructor
-}
+PageLogin::~PageLogin() = default;
 
 
-void PageLogin::on_button_clicked()
+void PageLogin::on_button_clicked() const
 {
 	signal_switch_page();
 }

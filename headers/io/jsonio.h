@@ -9,7 +9,7 @@
 
 struct Data
 {
-	bool success;
+	bool success{};
 
 	std::string token;
 	std::string first;

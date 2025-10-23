@@ -12,6 +12,4 @@ PageStats::PageStats() {
     set_child(box);
 }
 
-PageStats::~PageStats() {
-    // Destructor
-}
+PageStats::~PageStats() = default;

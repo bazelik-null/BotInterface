@@ -22,10 +22,7 @@ PageSettings::PageSettings() {
     set_child(box);
 }
 
-PageSettings::~PageSettings() {
-    // Destructor
-}
-
+PageSettings::~PageSettings() = default;
 void PageSettings::appendEntries()
 {
     box.append(entries.labelEntryToken);

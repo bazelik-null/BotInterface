@@ -17,8 +17,6 @@ class MainWindow final : public Gtk::Window {
         MainWindow();
         ~MainWindow() override;
 
-        void switchPage();
-
     protected:
         void on_switch_page();
 

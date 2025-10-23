@@ -3,10 +3,9 @@
 //
 
 #include <headers/io/jsonio.h>
+#include <headers/encryption/crypto.h>
 #include <fstream>
 #include <iostream>
-
-// TODO: encryption
 
 bool JsonIO::saveValuesAsJson(Data& data) {
 		std::ofstream outFile("settings.json");
@@ -27,6 +26,9 @@ bool JsonIO::saveValuesAsJson(Data& data) {
 		}
 
 		outFile.close();
+
+		Crypto::encrypt("settings.json");
+
 		return true;
 }
 
@@ -34,6 +36,8 @@ Data JsonIO::readValuesFromJson()
 {
 	Data data;
 	nlohmann::json json;
+
+	Crypto::decrypt("settings.json");
 
 	std::ifstream inFile("settings.json");
 
@@ -73,6 +77,7 @@ Data JsonIO::readValuesFromJson()
 	}
 
 	inFile.close();
+	Crypto::encrypt("settings.json");
 	return data;
 }
 

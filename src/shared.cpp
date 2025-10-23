@@ -3,6 +3,7 @@
 //
 
 #include <headers/shared.h>
+#include <headers/encryption/crypto.h>
 
 auto settingsValues = SettingsValues();
 SettingsValues& settingsValuesRef = settingsValues;
@@ -38,7 +39,6 @@ void SettingsValues::setValues(const std::string& tokenInput, const std::string&
     second = secondInput;
     third = thirdInput;
 
-    data.success = true; // This actually doesn't mead anything, just initializing it
     data.token = tokenInput;
     data.first = firstInput;
     data.second = secondInput;

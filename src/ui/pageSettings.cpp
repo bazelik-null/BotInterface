@@ -5,6 +5,8 @@
 #include <headers/ui/pageSettings.h>
 #include <headers/shared.h>
 
+// TODO: Add popup after saving settings
+
 PageSettings::PageSettings() {
     set_label("Settings");
 

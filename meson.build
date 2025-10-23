@@ -2,10 +2,11 @@ project('BotInterface', 'cpp',
         version : '1.0.0',
         default_options : ['warning_level=3', 'cpp_std=c++20'])
 
-# Dependency setup for gtkmm
+# Dependency setup
 gtkmm_dep = dependency('gtkmm-4.0', required: true)
-libsigcpp = dependency('sigc++-3.0', required: true)
-dependency_json = dependency('nlohmann_json', required: true)
+libsigcpp_dep = dependency('sigc++-3.0', required: true)
+json_dep = dependency('nlohmann_json', required: true)
+libsodium_dep = dependency('libsodium', required: true)
 
 # Download cpp-httplib.h start
 lib_dir = 'lib'
@@ -26,12 +27,13 @@ BotInterface = executable(  'BotInterface',
                             'src/main.cpp',
                             'src/shared.cpp',
                             'src/io/jsonio.cpp',
+                            'src/encryption/crypto.cpp',
                             'src/ui/mainWindow.cpp',
                             'src/ui/pageControl.cpp',
                             'src/ui/pageSettings.cpp',
                             'src/ui/pageStats.cpp',
                             'src/ui/pageLogin.cpp',
                             install: true,
-                            dependencies: [gtkmm_dep, libsigcpp],
+                            dependencies: [gtkmm_dep, libsigcpp_dep, json_dep, libsodium_dep],
                             win_subsystem : 'windows'
                          )
